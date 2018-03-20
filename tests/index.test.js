@@ -3,6 +3,7 @@ const resolve = require('path').resolve
 const utils = require(resolve('src/utils/exercise'))
 
 describe('Intern Testing', () => {
+
     it('หาตัวเลขที่มากที่สุด', () => {
         expect(utils.findMax([3, 6, 9, 10, 1, 4, 8, 5, 7, 2])).to.equal(10)
         expect(utils.findMax([30, 60, 90, 100, 10, 40, 80, 50, 70, 20])).to.equal(100)
@@ -14,8 +15,7 @@ describe('Intern Testing', () => {
     })
 
     it('เปลี่ยนรูปแบบข้อมูลให้ตรงตามโจทย์', () => {
-        const data = [
-            {
+        const data = [{
                 name: 'ball',
                 role: 'developer'
             },
@@ -49,16 +49,14 @@ describe('Intern Testing', () => {
             }
         ]
         const expectData = {
-            content: [
-                {
+            content: [{
                     nickname: 'mew'
                 },
                 {
                     nickname: 'jack'
                 }
             ],
-            developer: [
-                {
+            developer: [{
                     nickname: 'ball'
                 },
                 {
@@ -68,20 +66,18 @@ describe('Intern Testing', () => {
                     nickname: 'tongz'
                 }
             ],
-            designer: [
-                {
+            designer: [{
                     nickname: 'gee'
                 },
                 {
                     nickname: 'pat'
                 }
             ],
-            ux: [
-                {
-                    nickname: 'mod'
-                }
-            ]
+            ux: [{
+                nickname: 'mod'
+            }]
         }
+
         expect(expectData).to.deep.equal(utils.reformatData(data))
     })
 
