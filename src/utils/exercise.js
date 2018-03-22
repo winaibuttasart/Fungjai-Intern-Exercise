@@ -1,35 +1,21 @@
-function Max(a, b) {
-    return a > b ? a : b;
-}
-
-function Min(a, b) {
-    return a < b ? a : b;
+function sortNumber(a, b) {
+    return a - b;
 }
 
 module.exports = {
 
     findMax(arrFindMax) {
-        let len = arrFindMax.length;
-        let max = arrFindMax[0];
-        for (let i = 0; i < len; i++)
-            max = Max(max, arrFindMax[i]);
-        return max;
+        return arrFindMax.sort(sortNumber)[arrFindMax.length - 1]
     },
 
     findMin(arrFindMin) {
-        let len = arrFindMin.length;
-        let min = arrFindMin[0];
-        for (let i = 0; i < len; i++)
-            min = Min(min, arrFindMin[i]);
-        return min;
+        return arrFindMin.sort(sortNumber)[0]
     },
 
     reformatData(data) {
         let dataReturn = {}
-        let role;
         for (let i in data) {
-            role = dataReturn[data[i].role]
-            if (typeof (role) == 'undefined') {
+            if (typeof (dataReturn[data[i].role]) == 'undefined') {
                 dataReturn[data[i].role] = [];
                 dataReturn[data[i].role].push({
                     "nickname": data[i].name
@@ -44,11 +30,22 @@ module.exports = {
     },
 
     counterTen(numbers) {
-        let count = 0
-        for (let i = 0; i < numbers.length; i++) {
-            for (let j = i + 1; j < numbers.length; j++) {
-                if (numbers[i] + numbers[j] == 10)
+        let count = 0,
+            end = numbers.length - 1
+        numbers = numbers.sort(sortNumber)
+        
+        for (let i = 0; i < end; i++) {
+            for (let j = end; j > i; j--) {
+                let tmp = numbers[i] + numbers[j]
+                if (tmp == 10) {
                     count++
+                    end--
+                } else if (tmp < 10) {
+                    break;
+                } else {
+                    end--
+                    break;
+                }
             }
         }
         return count
