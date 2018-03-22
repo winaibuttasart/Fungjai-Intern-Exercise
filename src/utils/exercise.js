@@ -1,5 +1,5 @@
 function sortNumber(a, b) {
-    return a - b;
+    return a - b
 }
 
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
         let dataReturn = {}
         for (let i in data) {
             if (typeof (dataReturn[data[i].role]) == 'undefined') {
-                dataReturn[data[i].role] = [];
+                dataReturn[data[i].role] = []
                 dataReturn[data[i].role].push({
                     "nickname": data[i].name
                 })
@@ -32,18 +32,15 @@ module.exports = {
     counterTen(numbers) {
         let count = 0,
             end = numbers.length - 1
-        numbers = numbers.sort(sortNumber)
-        
+
+        numbers = numbers.sort(sortNumber(numbers))
+
         for (let i = 0; i < end; i++) {
             for (let j = end; j > i; j--) {
                 let tmp = numbers[i] + numbers[j]
                 if (tmp == 10) {
                     count++
-                    end--
                 } else if (tmp < 10) {
-                    break
-                } else {
-                    end--
                     break
                 }
             }
