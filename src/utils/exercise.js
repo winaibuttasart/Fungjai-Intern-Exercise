@@ -41,10 +41,10 @@ module.exports = {
                     count++
                     end--
                 } else if (tmp < 10) {
-                    break;
+                    break
                 } else {
                     end--
-                    break;
+                    break
                 }
             }
         }
