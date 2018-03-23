@@ -33,7 +33,7 @@ module.exports = {
         let count = 0,
             end = numbers.length - 1
 
-        numbers = numbers.sort(sortNumber(numbers))
+        numbers = numbers.sort(sortNumber)
 
         for (let i = 0; i < end; i++) {
             for (let j = end; j > i; j--) {
@@ -41,6 +41,12 @@ module.exports = {
                 if (tmp == 10) {
                     count++
                 } else if (tmp < 10) {
+                    if (numbers[j - 1] < numbers[j]) {
+                        end--
+                    }
+                    break
+                } else {
+                    end--
                     break
                 }
             }
