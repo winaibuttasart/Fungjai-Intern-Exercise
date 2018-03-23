@@ -41,13 +41,11 @@ module.exports = {
                 if (tmp == 10) {
                     count++
                 } else if (tmp < 10) {
-                    if (numbers[j - 1] < numbers[j]) {
-                        end--
-                    }
                     break
                 } else {
-                    end--
-                    break
+                    if (numbers[i + 1] + numbers[j] > 10) {
+                        end--
+                    }
                 }
             }
         }
